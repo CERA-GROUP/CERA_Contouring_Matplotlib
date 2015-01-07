@@ -67,7 +67,7 @@ Here are the specifics and bug fixes that we have addressed:
 ## Usage
 
 cera_contour_matplotlib.py -i (input datafile) -a (netcdf attribute name) 
--g (mesh file) -n (intervals) -m (maxlevel)"
+-g (mesh file) -n (intervals) -m (maxlevel)
 
 where: (mandatory)
        -i | infile	name of the NetCDF input file containing the 

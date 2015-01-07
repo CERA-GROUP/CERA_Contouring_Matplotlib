@@ -1,5 +1,5 @@
 # Matplotlib Contouring for ADCIRC NetCDF Data
-
+#
 
 This script uses the python library matplotlib (http://matplotlib.org/) 
 to create and plot contours from a single ADCIRC netcdf file. If multiple 
@@ -91,7 +91,8 @@ Download the test data file (maxele.63.nc) in your script directory.
 
 1. cera_contour_matplotlib.py -i maxele.63.nc -a zeta_max
    
-Note  example_1_plot.png
+Note:  example_1_plot.png
+
       In this example, no optional parameters (-n intervals or -m maxlevel) 
       are specified. The default values for these options will be applied.
       The maxlevel uses always the original units from the input file 
@@ -103,6 +104,7 @@ Note  example_1_plot.png
 2. cera_contour_matplotlib.py -i maxele.63.nc -a zeta_max -m 2
 
 Note: example_2_plot.png
+
       In this example, the maxlevel is given with the option -m as 
       2 (meters).  
       The output contours will be classified as 30 levels (default value for
@@ -111,6 +113,7 @@ Note: example_2_plot.png
 3. cera_contour_matplotlib.py -i maxele.63.nc -a zeta_max -n 10 -m 1
 
 Note: example_3_plot.png
+
       In this example, the output contours will be classified as 10 levels 
       (option -n intervals) between 0-1m (option -m maxlevel). 
 

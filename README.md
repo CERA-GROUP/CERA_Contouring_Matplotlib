@@ -71,7 +71,7 @@ cera_contour_matplotlib.py -i (input datafile) -a (netcdf attribute name)
 
 mandatory:
 
-      -i | infile	      name of the NetCDF input file containing the 
+      -i | infile       name of the NetCDF input file containing the 
                         ADCIRC data
       -a | attrname	   attribute name of the NetCDF data array
       The option -g is only required if the ADCIRC mesh information is not
@@ -81,7 +81,7 @@ mandatory:
 
 optional:
 
-       -n | intervals	number of contour intervals in output file 
+       -n | intervals   number of contour intervals in output file 
                         (default:30)
        -m | maxlevel	maximum data value to be used for contouring 
                         (default:highest value in data array)

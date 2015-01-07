@@ -1,4 +1,4 @@
-# Matplotlib Contouring for ADCIRC NetCDF data
+# Matplotlib Contouring for ADCIRC NetCDF Data
 ==============================================
 
 This script uses the python library matplotlib (http://matplotlib.org/) 

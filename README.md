@@ -10,7 +10,7 @@ Copyright (C): Carola Kaiser 2014, Louisiana State University.
 With special thanks to Ian Thomas from the matplotlib developer team for 
 helping us create clean geometries.
 
-This script is part of the Coastal Emergency Risks Assessment (*CERA*) 
+This script is part of the Coastal Emergency Risks Assessment (**CERA**) 
 software package, a real-time visualization system for ADCIRC storm surge 
 guidance. See http://coastalemergency.org.
 
@@ -18,7 +18,7 @@ CERA is Open Source software; distributed under the Boost Software
 License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at 
 http://www.boost.org/LICENSE_1_0.txt)
 
-Please visit also our *STORM* website (http://storm.stellar-group.org). 
+Please visit also our **STORM** website (http://storm.stellar-group.org). 
 The NSF funded STORM project focuses on introducing new and emerging 
 technologies into the ADCIRC code base to create a sustainable software
 framework and infrastructure for at least the next 20 years. 

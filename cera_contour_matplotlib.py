@@ -44,11 +44,11 @@ def create_command_line_parser():
     add_help_option=False)
 
   parser.add_option('-a', dest='attrname',
-    help='attribute name of the netcdf data array')
+    help='attribute name of the NetCDF data array')
   parser.add_option('-g', dest='grid',
-    help='optional: name of the file containing the ADCIRC mesh data (default: input file)')
+    help='optional: name of the NetCDF file containing the ADCIRC mesh (default: input file)')
   parser.add_option('-i', dest='infile',
-    help='name of the input file containing the ADCIRC data')
+    help='name of the NetCDF input file containing the ADCIRC data')
   parser.add_option('-m', dest='maxlevel',
     help='maximum data value to be used for contouring [default:highest value in data array]')
   parser.add_option('-n', dest='intervals',
@@ -281,8 +281,6 @@ def create_contours(argv):
 ###############################################################################
 def main(argv):
   if len(argv) < 5:
-    # command line options are tested in create_contours()
-    # optional: grid can be included in input file; timestep not necessary for max layer
     print "Usage: cera_contour_matplotlib.py -i [input datafile] -a [netcdf attribute name] <optional: -g [gridfile] -n [intervals] -m [maxlevel]>"
     sys.exit(-1)
   

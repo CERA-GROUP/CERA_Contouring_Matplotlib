@@ -47,8 +47,8 @@ mandatory:
 
 optional:
 
-      -n | intervals   number of contour intervals in output file (default:30)
-      -m | maxlevel	maximum data value to be used for contouring (default:highest value in data array)
+      -n | intervals    number of contour intervals in output file (default:30)
+      -m | maxlevel     maximum data value to be used for contouring (default:highest value in data array)
 
 ## Example usage
 

@@ -1,5 +1,6 @@
-# Matplotlib Contouring for ADCIRC NetCDF Data
-   
+Matplotlib Contouring for ADCIRC NetCDF Data
+============================================   
+
 This script uses the python library matplotlib (http://matplotlib.org/) to create and plot contours from a single ADCIRC netcdf file. If multiple time steps are given in the ADCIRC netcdf file, the first time step will be extracted.
 
 Copyright (C): Carola Kaiser 2014, Louisiana State University.
@@ -12,6 +13,7 @@ CERA is Open Source software; distributed under the Boost Software License, Vers
 Please visit also our **STORM** website (http://storm.stellar-group.org). The NSF funded STORM project focuses on introducing new and emerging technologies into the ADCIRC code base to create a sustainable software framework and infrastructure for at least the next 20 years. 
 
 ## Description
+
 The Coastal Emergency Risks Assessment (CERA) team provides guidance about storm surge and waves for the Northern Gulf and the Atlantic Coast through its online portal (http://coastalemergency.org). In addition to that, we are working towards the goal of providing all layers in the shapefile format compatible with GIS software. This feature will be available for the hurricane season 2015.
 
 We use the Python Matplotlib library (http://matplotlib.org/) to convert the ADCIRC NetCDF format into contours which can then be used to generate shapefiles. While working on the algorithms, the CERA team has discovered some specifics which are essential to produce clean geometries. Clean geometries in GIS terminology do not include any self-intersections, overlapping, or duplicate features and ensure the hassle-free usability for GIS specialists and emergency managers.
@@ -33,6 +35,7 @@ Here are the specifics and bug fixes that we have addressed:
 * Shapely (https://pypi.python.org/pypi/Shapely)
 
 ## Usage
+
 cera_contour_matplotlib.py -i (input datafile) -a (netcdf attribute name) -g (mesh file) -n (intervals) -m (maxlevel)
 
 mandatory:
@@ -48,6 +51,7 @@ optional:
    -m | maxlevel	maximum data value to be used for contouring (default:highest value in data array)
 
 ## Example usage
+
 Download the test data file (maxele.63.nc) in your script directory.
 
 1. cera_contour_matplotlib.py -i maxele.63.nc -a zeta_max

@@ -43,13 +43,15 @@ mandatory:
       -i | infile       name of the NetCDF input file containing the ADCIRC data
       -a | attrname     attribute name of the NetCDF data array
       
-      The option -g is only required if the ADCIRC mesh information is not included in the data input file.
+      The option -g is only required if the ADCIRC mesh information is not included in the data 
+      input file.
       -g | grid         name of the NetCDF file containing the ADCIRC mesh (default: input file)
 
 optional:
 
       -n | intervals    number of contour intervals in output file (default:30)
-      -m | maxlevel     maximum data value to be used for contouring (default:highest value in data array)
+      -m | maxlevel     maximum data value to be used for contouring (default:highest value 
+                        in data array)
 
 ## Example usage
 
@@ -57,20 +59,20 @@ Download the test data file (maxele.63.nc) in your script directory.
 
 [1] cera_contour_matplotlib.py -i maxele.63.nc -a zeta_max
    
-See: example_1_plot.png
+![Example 1](https://github.com/CERA-GROUP/cera_contour/blob/master/example_1_plot.png)
 
 In this example, no optional parameters (-n intervals or -m maxlevel) are specified. The default values for these options will be applied. The maxlevel uses always the original units from the input file (here: meters). The output contours will be classified as 30 levels and stretched between zero and and the maximum data value in the input file (here: 10.62 meters).
 
 [2] cera_contour_matplotlib.py -i maxele.63.nc -a zeta_max -m 2
 
-See: example_2_plot.png
+![Example 2](https://github.com/CERA-GROUP/cera_contour/blob/master/example_2_plot.png)
 
 In this example, the maxlevel is given with the option -m as 2 (meters). The output contours will be classified as 
 30 levels (default value for the missing option -n (intervals). The levels will be limited to 0-2m. 
 
 [3] cera_contour_matplotlib.py -i maxele.63.nc -a zeta_max -n 10 -m 1
 
-See: example_3_plot.png
+![Example 3](https://github.com/CERA-GROUP/cera_contour/blob/master/example_3_plot.png)
 
 In this example, the output contours will be classified as 10 levels (option -n intervals) between 0-1m 
 (option -m maxlevel). 

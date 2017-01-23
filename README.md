@@ -1,10 +1,10 @@
 Matplotlib Contouring for ADCIRC NetCDF Data
-============================================   
+============================================ 
 
 This script uses the python library matplotlib (http://matplotlib.org/) to create and plot contours from a single ADCIRC netcdf file. If multiple time steps are given in the ADCIRC netcdf file, the first time step will be extracted.
 
 Copyright (C): Carola Kaiser 2014, Louisiana State University.
-With special thanks to Ian Thomas from the matplotlib developer team for helping us create clean geometries.
+With special thanks to Ian Thomas from the matplotlib developer team for helping us to create clean geometries.
 
 This script is part of the Coastal Emergency Risks Assessment (**CERA**) software package, a real-time visualization system for ADCIRC storm surge guidance. See http://coastalemergency.org.
 
@@ -14,7 +14,7 @@ Please visit also our **STORM** website (http://storm.stellar-group.org). The NS
 
 ## Description
 
-The Coastal Emergency Risks Assessment (CERA) team provides guidance about storm surge and waves for the Northern Gulf and the Atlantic Coast through its online portal (http://coastalemergency.org). In addition to that, we are working towards the goal of providing all layers in the shapefile format compatible with GIS software. This feature will be available for the hurricane season 2015.
+The Coastal Emergency Risks Assessment (CERA) team provides storm surge and wave guidance for the Northern Gulf and the Atlantic Coast through its online portal (http://coastalemergency.org). In addition to that, we are working towards the goal of providing all layers in the shapefile format compatible with GIS software. This feature will be available for the hurricane season 2015.
 
 We use the Python Matplotlib library (http://matplotlib.org/) to convert the ADCIRC NetCDF format into contours which can then be used to generate shapefiles. While working on the algorithms, the CERA team has discovered some specifics which are essential to produce clean geometries. Clean geometries in GIS terminology do not include any self-intersections, overlapping, or duplicate features and ensure the hassle-free usability for GIS specialists and emergency managers.
 

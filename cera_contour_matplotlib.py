@@ -1,30 +1,30 @@
 # This script uses the python library matplotlib (http://matplotlib.org/)
-# to create contours from a single ADCIRC netcdf file. 
-# If multiple time steps are given in the ADCIRC netcdf file, 
+# to create contours from a single ADCIRC netcdf file.
+# If multiple time steps are given in the ADCIRC netcdf file,
 # the first time step will be extracted.
 
 # Copyright (C): Carola Kaiser 2014, Louisiana State University
-# Based on an idea by Rusty Holleman. 
-# With special thanks to Ian Thomas from the matplotlib developer team 
+# Based on an idea by Rusty Holleman.
+# With special thanks to Ian Thomas from the matplotlib developer team
 # for helping us create clean geometries.
 
-# This script is part of the Coastal Emergency Risks Assessment (CERA), 
+# This script is part of the Coastal Emergency Risks Assessment (CERA),
 # a real-time visualization system for ADCIRC storm surge guidance.
-# See http://coastalemergency.org. 
+# See http://coastalemergency.org.
 # CERA is Open Source software; distributed under the Boost Software
-# License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy 
+# License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy
 # at http://www.boost.org/LICENSE_1_0.txt)
 
 # script specifics and bugfixes:
-# Matplotlib 'tricontourf' expects a data array, but does not support 
-# masked arrays. If a masked array will be passed, it will be ignored. 
+# Matplotlib 'tricontourf' expects a data array, but does not support
+# masked arrays. If a masked array will be passed, it will be ignored.
 # The triangulation should only contain triangles with valid data at all
-# three vertices. The solution is to either remove invalid triangles from 
-# your 'element' array before creating the triangulation, or set a mask on 
-# the triangulation once it has been created. 
-# The created contours will contain one or more polygon exteriors and 
-# zero or more interiors. They can be in any order (an exterior is not 
-# necessarily followed by its interiors). This has to be explicitly tested 
+# three vertices. The solution is to either remove invalid triangles from
+# your 'element' array before creating the triangulation, or set a mask on
+# the triangulation once it has been created.
+# The created contours will contain one or more polygon exteriors and
+# zero or more interiors. They can be in any order (an exterior is not
+# necessarily followed by its interiors). This has to be explicitly tested
 # in your own script.
 
 import os, sys
@@ -65,7 +65,7 @@ def get_netcdf_grid(gridfile):
   gridvars = netCDF4.Dataset(gridfile).variables
 
   # get variable names for x, y depending on grid
-  if gridvars.has_key('x'):
+  if 'x' in gridvars:
     var_x = 'x'
     var_y = 'y'
     var_element = 'element'
@@ -79,7 +79,7 @@ def get_netcdf_grid(gridfile):
   elems = gridvars[var_element][:,:]-1  # Move to 0-indexing by subtracting 1, elements indexing starts with '1' in netcdf file
 
   if x is None or y is None or elems is None:
-    print "*** ERROR *** No 'x (lon)', 'y (lat)', or 'element (ele)' data array given in file '%s'" % gridfile
+    print("*** ERROR *** No 'x (lon)', 'y (lat)', or 'element (ele)' data array given in file '%s'" % gridfile)
     sys.exit(-1)
 
   return x, y, elems
@@ -92,12 +92,12 @@ def get_netcdf_data(infile, attrname):
   data = vars[attrname][:]
 
   if data is None:
-    print "*** ERROR *** No '%s' data array given in file '%s'" % (attrname, infile)
+    print("*** ERROR *** No '%s' data array given in file '%s'" % (attrname, infile))
     sys.exit(-1)
 
   # timesteps layer
   if len(data.shape) > 1:
-    print "*** The data file contains multiple time steps. The first time step (0) will be extracted."
+    print("*** The data file contains multiple time steps. The first time step (0) will be extracted.")
     return data[0]
 
   return data
@@ -154,7 +154,7 @@ def extract_geometries(contour, data_min, data_max):
         polys = [p for p in polys if p.shape[0] >= 3]
 
         # exteriors and interiors can be in any order (an exterior is not
-        # necessarily followed by its interiors - test it!) 
+        # necessarily followed by its interiors - test it!)
         exteriors, interiors = classify_polygons(polys)
         if len(interiors) > 0:
           interior_points = [pts[0] for pts in interiors]
@@ -201,18 +201,18 @@ def create_contours(argv):
   parser = create_command_line_parser()
   try:
     options, args = parser.parse_args(argv)
-  except optparse.OptionError, e:
-    print "*** ERROR *** %s\n\n" % str(e)
+  except optparse.OptionError as e:
+    print("*** ERROR *** %s\n\n" % str(e))
     sys.exit(-1)
 
   # command line sanity checks
   if (options.infile is None):
-    print "*** ERROR *** Missing option -i [infile]"
+    print("*** ERROR *** Missing option -i [infile]")
     sys.exit(-1)
   infile = options.infile
 
   if (options.attrname is None):
-    print "*** ERROR *** Missing option -a [attrname]"
+    print("*** ERROR *** Missing option -a [attrname]")
     sys.exit(-1)
   attrname = options.attrname
 
@@ -227,7 +227,7 @@ def create_contours(argv):
     intervals = int(options.intervals) + 1
 
   ###############################
-  # get grid data from netcdf grid or input file 
+  # get grid data from netcdf grid or input file
   x, y, elems = get_netcdf_grid(gridfile)
 
   # get data from 'attrname' array in netcdf input file
@@ -241,7 +241,7 @@ def create_contours(argv):
 
   ###############################
   # matplotlib: triangulation
-  print '\nTriangulating ...\n'
+  print('\nTriangulating ...\n')
   triang = tri.Triangulation(x, y, triangles=elems)
 
   ###############################
@@ -258,17 +258,17 @@ def create_contours(argv):
 
   except AttributeError:
     # the "mask" attribute was not found, assume that no -99999 values are in the dataset
-    print "No 'mask' attribute found in file '%s'" % infile
+    print("No 'mask' attribute found in file '%s'" % infile)
 
   levels = numpy.linspace(0, maxlevel, num=intervals)
-  print "levels: %s\n" % levels
+  print("levels: %s\n" % levels)
 
   #############################################################################
-  print 'Making contours ...\n'
+  print('Making contours ...\n')
   contour = plt.tricontourf(triang, data, levels=levels, extend='both')
 
   # extracting contour shapes from tricontourf object
-  print 'Extracting contour geometries ...'
+  print('Extracting contour geometries ...')
   geoms, vars = extract_geometries(contour, data.min(), data.max())
 
   # pyplot color plot
@@ -281,9 +281,9 @@ def create_contours(argv):
 ###############################################################################
 def main(argv):
   if len(argv) < 5:
-    print "Usage: cera_contour_matplotlib.py -i [input datafile] -a [netcdf attribute name] <optional: -g [gridfile] -n [intervals] -m [maxlevel]>"
+    print("Usage: cera_contour_matplotlib.py -i [input datafile] -a [netcdf attribute name] <optional: -g [gridfile] -n [intervals] -m [maxlevel]>")
     sys.exit(-1)
-  
+
   # create contours with matplotlib
   return create_contours(argv)
 

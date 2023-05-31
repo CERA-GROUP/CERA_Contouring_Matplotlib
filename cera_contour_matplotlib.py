@@ -261,7 +261,7 @@ def create_contours(argv):
     print("No 'mask' attribute found in file '%s'" % infile)
 
   levels = numpy.linspace(0, maxlevel, num=intervals)
-  print("levels: %s\n" % levels)
+  # print("levels: %s\n" % levels)
 
   #############################################################################
   print('Making contours ...\n')

@@ -271,7 +271,7 @@ def create_contours(argv):
   geoms, vars = extract_geometries(contour, data.min(), data.max())
 
   # pyplot color plot
-  c = plt.tricontourf(triang, data, levels=levels, extend='both')
+  c = plt.tricontourf(triang, data, levels=levels, cmap=plt.cm.jet, extend='both')
   c.cmap.set_under("#000066")
   c.cmap.set_over("#880066")
   plt.colorbar(c, ticks=levels)

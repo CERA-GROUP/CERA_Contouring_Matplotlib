@@ -159,7 +159,7 @@ def extract_geometries(contour, data_min, data_max):
         if len(interiors) > 0:
           interior_points = [pts[0] for pts in interiors]
 
-        overall_inout = numpy.zeros((len(interiors),), dtype=numpy.bool)
+        overall_inout = numpy.zeros((len(interiors),), dtype=bool)
 
         for exterior in exteriors:
           if len(interiors) > 0:

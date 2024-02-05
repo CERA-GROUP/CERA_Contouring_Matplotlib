@@ -3,7 +3,7 @@ CERA Matplotlib Contouring for ADCIRC NetCDF Data
 
 This script uses the python library matplotlib (http://matplotlib.org/) to create and plot contours from a single ADCIRC netcdf file. If multiple time steps are given in the ADCIRC netcdf file, the first time step will be extracted.
 
-Copyright (C): Carola Kaiser 2014-2023, Louisiana State University.
+Copyright (C): Carola Kaiser 2014-2024, Louisiana State University.
 With special thanks to Ian Thomas from the matplotlib developer team for helping us to create clean geometries.
 
 This script is part of the Coastal Emergency Risks Assessment (**CERA**) software package, a real-time visualization system for ADCIRC storm surge guidance. See https://cera.coastalrisk.live.
